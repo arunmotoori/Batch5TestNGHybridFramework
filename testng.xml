@@ -5,6 +5,7 @@
     <classes>
       <class name="tests.Register"/>
       <class name="tests.Login"/>
+      <class name="tests.Search"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
