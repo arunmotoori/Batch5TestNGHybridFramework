@@ -5,27 +5,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class NewsletterSubscriptionPage {
-	
-	WebDriver driver;
-	
+import root.RootPage;
+
+public class NewsletterSubscriptionPage extends RootPage {
+
 	public NewsletterSubscriptionPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver,this);
+		super(driver);
+		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath="//input[@name='newsletter'][@value='1']")
+
+	@FindBy(xpath = "//input[@name='newsletter'][@value='1']")
 	private WebElement yesNewsletterOption;
-	
-	@FindBy(xpath="//input[@name='newsletter'][@value='0']")
+
+	@FindBy(xpath = "//input[@name='newsletter'][@value='0']")
 	private WebElement noNewsletterOption;
-	
+
 	public boolean isYesNewsletterOptionSelected() {
-		return yesNewsletterOption.isSelected();
+		return elementUtilities.isElementSelected(yesNewsletterOption);
 	}
-	
+
 	public boolean isNoNewsletterOptionSelected() {
-		return noNewsletterOption.isSelected();
+		return elementUtilities.isElementSelected(noNewsletterOption);
 	}
 
 }

@@ -5,88 +5,88 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RegisterAccountPage {
-	
-	WebDriver driver;
-	
+import root.RootPage;
+
+public class RegisterAccountPage extends RootPage {
+
 	public RegisterAccountPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver,this);
+		super(driver);
+		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath="//input[@name='newsletter'][@value='1']")
+
+	@FindBy(xpath = "//input[@name='newsletter'][@value='1']")
 	private WebElement yesNewsletterOption;
-	
-	@FindBy(xpath="//input[@name='newsletter'][@value='0']")
+
+	@FindBy(xpath = "//input[@name='newsletter'][@value='0']")
 	private WebElement noNewsletterOption;
-	
-	@FindBy(id="input-firstname")
+
+	@FindBy(id = "input-firstname")
 	private WebElement firstNameField;
-	
-	@FindBy(id="input-lastname")
+
+	@FindBy(id = "input-lastname")
 	private WebElement lastNameField;
-	
-	@FindBy(id="input-email")
+
+	@FindBy(id = "input-email")
 	private WebElement emailField;
-	
-	@FindBy(id="input-telephone")
+
+	@FindBy(id = "input-telephone")
 	private WebElement telephoneField;
-	
-	@FindBy(id="input-password")
+
+	@FindBy(id = "input-password")
 	private WebElement passwordField;
-	
-	@FindBy(id="input-confirm")
+
+	@FindBy(id = "input-confirm")
 	private WebElement passwordConfirmField;
-	
-	@FindBy(name="agree")
+
+	@FindBy(name = "agree")
 	private WebElement privacyPolicyField;
-	
-	@FindBy(xpath="//input[@value='Continue']")
+
+	@FindBy(xpath = "//input[@value='Continue']")
 	private WebElement continueButton;
-	
+
 	public boolean isPrivacyPolicyFieldSelected() {
-		return privacyPolicyField.isSelected();
+		return elementUtilities.isElementSelected(privacyPolicyField);
 	}
-	
+
 	public void selectNoNewsletterOption() {
-		noNewsletterOption.click();
+		elementUtilities.clickOnElement(noNewsletterOption);
 	}
-	
+
 	public void selectYesNewsletterOption() {
-		yesNewsletterOption.click();
+		elementUtilities.clickOnElement(yesNewsletterOption);
 	}
-	
+
 	public AccountSuccessPage clickOnContinueButton() {
-		continueButton.click();
+		elementUtilities.clickOnElement(continueButton);
 		return new AccountSuccessPage(driver);
 	}
-	
+
 	public void selectPrivacyPolicyField() {
-		privacyPolicyField.click();
+		elementUtilities.clickOnElement(privacyPolicyField);
 	}
 
 	public void enterConfirmationPassword(String passwordText) {
-		passwordConfirmField.sendKeys(passwordText);
+		elementUtilities.enterTextIntoElement(passwordConfirmField, passwordText);
 	}
-	
+
 	public void enterPassword(String passwordText) {
-		passwordField.sendKeys(passwordText);
+		elementUtilities.enterTextIntoElement(passwordField, passwordText);
 	}
-	
+
 	public void enterTelephone(String telephoneText) {
-		telephoneField.sendKeys(telephoneText);
+		elementUtilities.enterTextIntoElement(telephoneField, telephoneText);
 	}
-	
+
 	public void enterEmail(String emailText) {
-		emailField.sendKeys(emailText);
+		elementUtilities.enterTextIntoElement(emailField, emailText);
 	}
-	
+
 	public void enterLastName(String lastNameText) {
-		lastNameField.sendKeys(lastNameText);
+		elementUtilities.enterTextIntoElement(lastNameField, lastNameText);
 	}
-	
+
 	public void enterFirstName(String firstNameText) {
-		firstNameField.sendKeys(firstNameText);
+		elementUtilities.enterTextIntoElement(firstNameField, firstNameText);
 	}
 
 }

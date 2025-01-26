@@ -5,30 +5,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AccountSuccessPage {
-	
-	WebDriver driver;
-	
+import root.RootPage;
+
+public class AccountSuccessPage extends RootPage {
+
 	public AccountSuccessPage(WebDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(driver,this);
+		super(driver);
+		PageFactory.initElements(driver, this);
 	}
-	
-	@FindBy(xpath="//ul[@class='breadcrumb']//a[text()='Success']")
+
+	@FindBy(xpath = "//ul[@class='breadcrumb']//a[text()='Success']")
 	private WebElement accountSuccessPageBreadcrumb;
-	
-	@FindBy(xpath="//a[@class='btn btn-primary'][text()='Continue']")
+
+	@FindBy(xpath = "//a[@class='btn btn-primary'][text()='Continue']")
 	private WebElement continueButton;
-	
+
 	public MyAccountPage clickOnContinueButton() {
-		continueButton.click();
+		elementUtilities.clickOnElement(continueButton);
 		return new MyAccountPage(driver);
 	}
-	
+
 	public boolean didWeNavigateToAccountSuccessPage() {
-		return accountSuccessPageBreadcrumb.isDisplayed();
+		return elementUtilities.isElementDisplayed(accountSuccessPageBreadcrumb);
 	}
-	
+
 	public RightColumnOptions getRightColumnOptions() {
 		return new RightColumnOptions(driver);
 	}
