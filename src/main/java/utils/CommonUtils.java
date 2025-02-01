@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.ExtentSparkReporterConfig;
+
 public class CommonUtils {
 	
 	public static Properties loadProperties() {
@@ -85,6 +89,25 @@ public class CommonUtils {
 
 		return obj;
 
+	}
+	
+	public static ExtentReports getExtentReports() {
+		
+		ExtentReports extentReport = new ExtentReports();
+		
+		ExtentSparkReporter sparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"\\Reports\\ExtentReport.html");
+		ExtentSparkReporterConfig sparkReporterConfig = sparkReporter.config();
+		sparkReporterConfig.setReportName("TutorialsNinja Results");
+		sparkReporterConfig.setDocumentTitle("TN Report");
+		
+		extentReport.attachReporter(sparkReporter);
+		extentReport.setSystemInfo("Username",System.getProperty("user.name"));
+		extentReport.setSystemInfo("Seleium Version","4.27.0");
+		extentReport.setSystemInfo("OS",System.getProperty("os.name"));
+		extentReport.setSystemInfo("Java Version",System.getProperty("java.version"));
+		
+		return extentReport;
+		
 	}
 
 

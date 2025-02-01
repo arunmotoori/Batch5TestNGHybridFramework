@@ -48,6 +48,12 @@
 	    <artifactId>poi</artifactId>
 	    <version>4.1.2</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+	<dependency>
+	    <groupId>com.aventstack</groupId>
+	    <artifactId>extentreports</artifactId>
+	    <version>5.1.2</version>
+	</dependency>
   </dependencies>
 
   <build>
@@ -68,8 +74,14 @@
           <version>3.13.0</version>
         </plugin>
         <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>3.3.0</version>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>3.5.2</version>
+	        <configuration>
+	          <suiteXmlFiles>
+	            <suiteXmlFile>testng.xml</suiteXmlFile>
+	          </suiteXmlFiles>
+	        </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
